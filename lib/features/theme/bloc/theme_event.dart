@@ -2,6 +2,10 @@ abstract class ThemeEvent {
   const ThemeEvent();
 }
 
-class ThemeToggled extends ThemeEvent {
-  const ThemeToggled();
+class ToggleTheme extends ThemeEvent {
+  const ToggleTheme();
+}
+
+class LoadSavedTheme extends ThemeEvent {
+  const LoadSavedTheme();
 }

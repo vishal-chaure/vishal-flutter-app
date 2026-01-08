@@ -60,6 +60,15 @@ class CounterPage extends StatelessWidget {
                       },
                       child: const Text('-'),
                     ),
+                    const SizedBox(width: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        context
+                            .read<CounterBloc>()
+                            .add(const CounterReset());
+                      },
+                      child: const Text('Reset'),
+                    ),
                   ],
                 ),
               ],

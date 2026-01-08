@@ -1,24 +1,21 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/material.dart';
-
+import '../../../data/local/theme_preferences.dart';
 import 'theme_event.dart';
 import 'theme_state.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  ThemeBloc() : super(const ThemeState(themeMode: ThemeMode.light)) {
-    on<ThemeToggled>(_onThemeToggled);
-  }
+  ThemeBloc() : super(ThemeState(isDark: false)) {
+    // Load saved theme on app start
+    on<LoadSavedTheme>((event, emit) async {
+      final isDark = await ThemePreferences.loadTheme();
+      emit(ThemeState(isDark: isDark));
+    });
 
-  void _onThemeToggled(
-    ThemeToggled event,
-    Emitter<ThemeState> emit,
-  ) {
-    final isLight = state.themeMode == ThemeMode.light;
-
-    emit(
-      ThemeState(
-        themeMode: isLight ? ThemeMode.dark : ThemeMode.light,
-      ),
-    );
+    // Toggle theme
+    on<ToggleTheme>((event, emit) async {
+      final newTheme = !state.isDark;
+      await ThemePreferences.saveTheme(newTheme);
+      emit(ThemeState(isDark: newTheme));
+    });
   }
 }

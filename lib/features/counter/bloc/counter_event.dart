@@ -9,3 +9,7 @@ class CounterIncremented extends CounterEvent {
 class CounterDecremented extends CounterEvent {
   const CounterDecremented();
 }
+
+class CounterReset extends CounterEvent {
+  const CounterReset();
+}

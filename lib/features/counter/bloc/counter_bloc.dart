@@ -7,6 +7,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   CounterBloc() : super(const CounterState(value: 0)) {
     on<CounterIncremented>(_onIncrement);
     on<CounterDecremented>(_onDecrement);
+    on<CounterReset>(_onReset);
   }
 
   void _onIncrement(
@@ -24,6 +25,15 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   ) {
     emit(
       CounterState(value: state.value - 1),
+    );
+  }
+
+  void _onReset(
+    CounterReset event,
+    Emitter<CounterState> emit,
+  ) {
+    emit(
+      CounterState(value: 0),
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../features/theme/bloc/theme_bloc.dart';
 import '../features/theme/bloc/theme_state.dart';
-import '../features/counter/ui/counter_page.dart';
+import '../shared/widgets/app_scaffold.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -17,7 +17,7 @@ class App extends StatelessWidget {
           theme: ThemeData.light(),
           darkTheme: ThemeData.dark(),
           themeMode: state.themeMode,
-          home: const CounterPage(),
+          home: const AppScaffold(),
         );
       },
     );

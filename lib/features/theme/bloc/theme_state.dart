@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ThemeState {
-  final ThemeMode themeMode;
+  final bool isDark;
 
-  const ThemeState({required this.themeMode});
+  ThemeState({required this.isDark});
+
+  ThemeMode get themeMode => isDark ? ThemeMode.dark : ThemeMode.light;
 }

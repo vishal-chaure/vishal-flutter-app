@@ -21,7 +21,7 @@ class ThemeToggle extends StatelessWidget {
             Switch(
               value: isDark,
               onChanged: (_) {
-                context.read<ThemeBloc>().add(const ThemeToggled());
+                context.read<ThemeBloc>().add(const ToggleTheme());
               },
             ),
             const Icon(Icons.dark_mode),
